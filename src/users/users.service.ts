@@ -17,6 +17,7 @@ export class UsersService {
         age: userdata.age,
         email: userdata.email,
         avatar: userdata.avatar,
+        password: userdata.password,
       },
     });
   }

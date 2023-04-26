@@ -9,17 +9,20 @@ import { PrismaService } from './core/orm/prisma.service';
 import { ServeStaticModule } from '@nestjs/serve-static/dist/serve-static.module';
 import { join } from 'path';
 import { AuthModule } from './auth/auth.module';
+import { PrismaModule } from './core/orm/prisma.module';
+import {AuthController} from "./auth/auth.controller";
 
 @Module({
   imports: [
     UsersModule,
     PetsModule,
+    PrismaModule,
+    AuthModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'public'),
     }),
-    AuthModule,
   ],
-  controllers: [AppController, UsersController],
-  providers: [AppService, UsersService, PrismaService],
+  controllers: [AppController, UsersController, AuthController],
+  providers: [AppService, UsersService, PrismaModule],
 })
 export class AppModule {}

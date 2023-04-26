@@ -40,4 +40,8 @@ export class CreateUserDto {
   @IsBoolean()
   @IsOptional()
   status: boolean;
+
+  @ApiProperty({ required: true, example: '12#%$dfdfg' })
+  @IsString()
+  password: string;
 }
